@@ -28,7 +28,9 @@ export default function ContactSection() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
+    null,
+  );
 
   const validateForm = () => {
     const newErrors = {
@@ -81,7 +83,7 @@ export default function ContactSection() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -104,11 +106,11 @@ export default function ContactSection() {
     try {
       // Simulate API call - replace with your actual API endpoint
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+
       // Success
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-      
+
       // Clear success message after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000);
     } catch (error) {
